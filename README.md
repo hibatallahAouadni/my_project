@@ -5,7 +5,10 @@
 	
 > symfony check:requirements
 	
-> composer install
+> composer install  
+
+OR  
+> php composer.phar install
 	
 > symfony server:start
 	
