@@ -7,6 +7,24 @@ app_lucky_number:
   controller: App\Controller\LuckyController::number
 
 blog_list:
-  path: /blog
+  path: /blog/{page<\d+>?89}
   controller: App\Controller\BlogController::list
 
+blog_show:
+  path: /blog/{slug}
+  controller: App\Controller\BlogController::show
+
+api_post_show:
+  path: /api/posts/{id}
+  controller: App\Controller\BlogApiController::show
+  methods: GET|HEAD
+
+api_post_edit:
+  path: /api/posts/{id}
+  controller: App\Controller\BlogApiController::edit
+  methods: PUT
+
+contact:
+  path: /contact
+  controller: App\Controller\DefaultController:contact
+  condition: "context.getMethod() in ['GET', 'HEAD'] and request.headers.get('User-Agent') matches '/firefox/i'"
